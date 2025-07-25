@@ -180,9 +180,10 @@ def main(window):
     clock = pygame.time.Clock()
     bg, bg_image = get_background("Sprite-0001.png")
     
-    player =  Player(100, 100, 50, 50)
+    player =  Player(528, 440, 0, 0)
     block_size = 96
-    block = [Block(0, HEIGHT- block_size, block_size)]
+    
+    floor = [Block(i*block_size, HEIGHT - block_size, block_size) for i in range(-WIDTH // block_size, WIDTH * 2 // block_size)]
 
     run = True
     while run:
@@ -195,7 +196,7 @@ def main(window):
 
         player.loop(FPS) 
         handle_move(player)
-        draw(window, bg, bg_image, player, block)  
+        draw(window, bg, bg_image, player, floor)  
         # draw(window, background, bg_image, player, objects):
 
     pygame.quit()
